@@ -33,15 +33,18 @@ df_red_card_indexation = whole_df.set_index('red_cards')
 # print('\nRed card indexing (sorted):\n', df_red_card_indexation.sort_index(ascending=False).head())
 # print('\nRestarting to default indexing:\n', df_red_card_indexation.reset_index().head())
 
-# Selecting specific column and/or row in one line (suports slicing)
-whole_df = whole_df.set_index('player_name')
+# Selecting specific column and/or row by label (suports slicing)
+whole_df_b = whole_df.set_index('player_name')
 players = ['Cristiano Ronaldo', 'Lionel Messi', 'Luis Suárez']
 cols = ['goals', 'games', 'year']
-df_specific_rows_and_cols = whole_df[whole_df.year == 2015].loc[players, cols]
+df_specific_rows_and_cols = whole_df_b[whole_df_b.year == 2015].loc[players, cols]
+# print('\nTop players 2015:\n', df_specific_rows_and_cols)
 
 df_first_20 = whole_df.loc[ :20 , ['player_name', 'goals', 'games', 'year'] ]
-df_half_cols = whole_df.loc[ :20 , whole_df.keys()[len(whole_df.keys())//2:len(whole_df.keys())] ]
-# print('\nTop players 2015:\n', df_specific_rows_and_cols)
-# print('\nGoals of first 20 players:\n', df_first_20)
-# print('\nFirst 20 players, half columns:\n', df_half_cols)
+df_half_cols = whole_df.loc[ 0:20 , whole_df.keys()[len(whole_df.keys())//2:len(whole_df.keys())] ]
+print('\nGoals of first 20 players:\n', df_first_20)
+print('\nFirst 20 players, half columns:\n', df_half_cols)
 
+# Selecting specific column and/or row by numeric index (suports slicing)
+whole_df_b = whole_df.iloc[ 0:10, [0,1] ]
+print('\nFirst 10 player id and name:\n', whole_df_b)

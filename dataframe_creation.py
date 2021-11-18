@@ -29,3 +29,9 @@ print(f'\nRead from CSV file:\n{df_a}')
 # Changing the default numeric indexation of rows
 df_b = pd.read_csv(filepath_or_buffer='./data/testing.csv', index_col='player')
 print(f'\nDataframe with player name indexation:\n{df_b}')
+
+# Changing default indexation by custom list
+custom_list = ['player 1', 'player 2']
+df_c = pd.DataFrame(football_dict_a)
+df_c.index = custom_list
+print(f'\nDataframe custom indexation with list:\n{df_c}')
